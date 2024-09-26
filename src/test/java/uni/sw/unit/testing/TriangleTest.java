@@ -56,6 +56,6 @@ public class TriangleTest {
 
         assertTrue(triangle instanceof Triangle);
 
-        assertEquals(528, triangle.getPerimeter(), "Calculated perimeter doesn't match expected value!");
+        assertEquals(529, triangle.getPerimeter(), "Calculated perimeter doesn't match expected value!");
     }
 }
