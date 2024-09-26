@@ -2,9 +2,37 @@ package uni.sw.unit.testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TriangleTest {
+
+    @BeforeAll
+    public static void setup()
+    {
+        System.out.println("BeforeAll demo: setup test execution");
+    }
+
+    @AfterAll
+    public static void tearDown()
+    {
+        System.out.println("AfterAll demo: tear down test execution");
+    }
+
+    @BeforeEach
+    public void initTest()
+    {
+        System.out.println("BeforeEach demo: init test case");
+    }
+
+    @AfterEach
+    public void tearDownText(){
+        System.out.println("AfterEach demo: tear down test case");
+    }
+
 
     @Test
     public void testGenericTriangle(){
