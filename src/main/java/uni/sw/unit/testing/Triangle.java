@@ -4,7 +4,7 @@ public class Triangle {
     private int a, b, c;
 
     public Triangle (int a, int b, int c){
-        if ( ((a + b) > c ) && ((b + c) > a )){
+        if ( ((a + b) > c ) && ((b + c) > a ) && ((a+c) > b)){
             this.a = a;
             this.b = b;
             this.c = c;    
@@ -35,6 +35,9 @@ public class Triangle {
     }
 
     public double getArea(){
-        throw new UnsupportedOperationException("This function is not yet implemented");
+
+        double s = (a + b + c)/2.0;
+        return Math.sqrt(s * (s-a) * (s - b) * (s - c));
+
     }
 }

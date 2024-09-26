@@ -19,34 +19,53 @@ public class TriangleTest {
     @Test
     public void testIsoscalesTriangle()
     {
-        Triangle triangle = new Triangle(3, 3 , 5);
+        Triangle triangle1 = new Triangle(3, 3 , 5);
+        Triangle triangle2 = new Triangle(3, 4 , 5);
 
-        assertTrue(triangle instanceof Triangle);
+        assertTrue(triangle1 instanceof Triangle);
+        assertTrue(triangle2 instanceof Triangle);
 
-        assertTrue(triangle.isIsosceles());
+        assertTrue(triangle1.isIsosceles());
+        assertFalse(triangle2.isIsosceles());
 
     }
 
     @Test
     public void testEquilateralTriangle()
     {
-        Triangle triangle = new Triangle(5, 5 , 5);
+        Triangle triangle1 = new Triangle(5, 5 , 5);
+        Triangle triangle2 = new Triangle(3, 4 , 5);
 
-        assertTrue(triangle instanceof Triangle);
+        assertTrue(triangle1 instanceof Triangle);
+        assertTrue(triangle2 instanceof Triangle);
 
-        assertTrue(triangle.isIsosceles());
-        assertTrue(triangle.isEquilateral());
+        assertTrue(triangle1.isIsosceles());
+        assertTrue(triangle1.isEquilateral());
+
+        assertFalse(triangle2.isIsosceles());
+        assertFalse(triangle2.isEquilateral());
 
     }
 
     @Test
     public void testRightAngeledTriangle()
     {
-        Triangle triangle = new Triangle(6, 8, 10);
+        Triangle triangle1 = new Triangle(6, 8, 10);
+        Triangle triangle2 = new Triangle(10, 6, 8);
+        Triangle triangle3 = new Triangle(8, 10, 6);
+        Triangle triangle4 = new Triangle(5, 5, 5);
 
-        assertTrue(triangle instanceof Triangle);   
+        assertTrue(triangle1 instanceof Triangle);   
+        assertTrue(triangle2 instanceof Triangle);   
+        assertTrue(triangle3 instanceof Triangle);   
+        assertTrue(triangle4 instanceof Triangle);   
 
-        assertTrue(triangle.isRightAngeled());
+        assertTrue(triangle1.isRightAngeled());
+        assertTrue(triangle2.isRightAngeled());
+        assertTrue(triangle3.isRightAngeled());
+        assertFalse(triangle4.isRightAngeled());
+        
+
     }
 
     @Test
@@ -58,4 +77,38 @@ public class TriangleTest {
 
         assertEquals(529, triangle.getPerimeter(), "Calculated perimeter doesn't match expected value!");
     }
+
+    @Test
+    public void testArea()
+    {
+        Triangle triangle = new Triangle(3, 4, 6);
+
+        assertTrue(triangle instanceof Triangle);
+
+        double testValue = 5.333;
+        double marginOfError = 0.001;
+        double calculatedArea = triangle.getArea();
+
+        assertEquals(calculatedArea, testValue, marginOfError);
+    }
+
+    @Test
+    public void testNotConstructableTriangle()
+    {
+        Exception exception = assertThrows(ArithmeticException.class, () ->{
+            new Triangle(3, 4, 7);
+        });
+
+        assertTrue(exception.getMessage().contains("The triangle cannot be constructed from the the numbers"));
+
+        assertThrows(ArithmeticException.class, () ->{
+            new Triangle(3, 7, 4);
+        });
+
+        assertThrows(ArithmeticException.class, () ->{
+            new Triangle(7, 3, 4);
+        });
+
+    }
+
 }
