@@ -20,11 +20,14 @@ public class Triangle {
     }
 
     public boolean isEquilateral(){
-        throw new UnsupportedOperationException("This function is not yet implemented");
+        return (a == b && b == c) ? true : false;
     }
 
     public boolean isRightAngeled(){
-        throw new UnsupportedOperationException("This function is not yet implemented"); 
+        if(a*a + b*b == c*c) return true;
+        if(a*a + c*c == b*b) return true;
+        if(c*c + b*b == a*a) return true;
+        return false;
     }
 
     public int getPerimeter(){
